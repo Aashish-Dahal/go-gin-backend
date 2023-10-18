@@ -74,19 +74,19 @@ func (cc UserController) CreateUser(c *gin.Context) {
 		return
 	}
 
-	if _, err := cc.userService.GetOneUserWithEmail(reqData.Email); err != nil {
-		cc.logger.Zap.Error("Error [CreateUser] [db CreateUser]: User with this email already exists")
-		err := errors.BadRequest.New("User with this email already exists")
-		responses.HandleError(c, err)
-		return
-	}
+	// if _, err := cc.userService.GetOneUserWithEmail(reqData.Email); err != nil {
+	// 	cc.logger.Zap.Error("Error [CreateUser] [db CreateUser]: User with this email already exists")
+	// 	err := errors.BadRequest.New("User with this email already exists")
+	// 	responses.HandleError(c, err)
+	// 	return
+	// }
 
-	if _, err := cc.userService.GetOneUserWithPhone(reqData.Phone); err != nil {
-		cc.logger.Zap.Error("Error [db GetOneUserWithPhone]: User with this phone already exists")
-		err := errors.BadRequest.New("User with this phone already exists")
-		responses.HandleError(c, err)
-		return
-	}
+	// if _, err := cc.userService.GetOneUserWithPhone(reqData.Phone); err != nil {
+	// 	cc.logger.Zap.Error("Error [db GetOneUserWithPhone]: User with this phone already exists")
+	// 	err := errors.BadRequest.New("User with this phone already exists")
+	// 	responses.HandleError(c, err)
+	// 	return
+	// }
 
 	if err := cc.userService.WithTrx(trx).CreateUser(reqData.User); err != nil {
 		cc.logger.Zap.Error("Error [CreateUser] [db CreateUser]: ", err.Error())
