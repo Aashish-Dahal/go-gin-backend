@@ -32,5 +32,9 @@ func (i FeedRoutes) Setup() {
 	feeds := i.router.Gin.Group("/feed")
 	{
 		feeds.POST("", i.trxMiddleware.DBTransactionHandle(), i.feedController.CreateFeed)
+		feeds.GET("", i.feedController.GetAllFeeds)
+		feeds.GET("/:id", i.feedController.GetFeedByID)
+		feeds.GET("/:id", i.feedController.DeleteFeed)
+
 	}
 }
