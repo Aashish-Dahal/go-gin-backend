@@ -7,4 +7,6 @@ var Module = fx.Options(
 	fx.Provide(NewUserController),
 	fx.Provide(NewJwtAuthController),
 	fx.Provide(NewFeedController),
+	fx.Provide(NewLikeController),
+	fx.Provide(NewCommentController),
 )
