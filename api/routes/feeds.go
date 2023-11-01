@@ -34,7 +34,7 @@ func (i FeedRoutes) Setup() {
 		feeds.POST("", i.trxMiddleware.DBTransactionHandle(), i.feedController.CreateFeed)
 		feeds.GET("", i.feedController.GetAllFeeds)
 		feeds.GET("/:id", i.feedController.GetFeedByID)
-		feeds.GET("/:id", i.feedController.DeleteFeed)
+		feeds.DELETE("/:id", i.feedController.DeleteFeed)
 
 	}
 }
